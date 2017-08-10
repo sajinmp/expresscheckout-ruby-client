@@ -84,7 +84,7 @@ class Payments
       raise InvalidArguementError.new("ERROR: 'redirect_after_payment' should be true or false")
     end
 
-    response = request(method,url,parameters)
+    response = api_request(method,url,parameters)
     payment = Transaction.new(response.body)
     return payment
   end
@@ -115,7 +115,7 @@ class Payments
       end
     end
 
-    response = request(method,url,parameters)
+    response = api_request(method,url,parameters)
     payment = Transaction.new(response.body)
     return payment
   end
@@ -146,7 +146,7 @@ class Payments
       end
     end
 
-    response = request(method,url,parameters)
+    response = api_request(method,url,parameters)
     payment = Transaction.new(response.body)
     return payment
   end
@@ -161,7 +161,7 @@ class Payments
     url = "/merchants/#{merchant}/paymentmethods"
 
     method = 'GET'
-    response = Array(request(method,url,{}).body['payment_methods'])
+    response = Array(api_request(method,url,{}).body['payment_methods'])
     payment_methods = []
     i=0
     while i != response.count

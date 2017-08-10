@@ -7,7 +7,7 @@ require 'errors/invalid_request_error'
 require 'errors/authentication_error'
 require 'errors/invalid_arguement_error'
 
-def request(method, url, parameters={})
+def api_request(method, url, parameters={})
   begin
     if $environment == 'production'
       $server = 'https://api.juspay.in'

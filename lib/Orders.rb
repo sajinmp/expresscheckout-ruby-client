@@ -156,7 +156,7 @@ class Orders
 
     method = 'POST'
     url = '/order/create'
-    response = request(method,url,options)
+    response = api_request(method,url,options)
     order = Order.new(response.body)
     return order
   end
@@ -169,7 +169,7 @@ class Orders
 
     method = 'GET'
     url = '/order/status'
-    response = request(method,url,options)
+    response = api_request(method,url,options)
     order = Order.new(response.body)
     return order
   end
@@ -177,7 +177,7 @@ class Orders
   def Orders.list(options={})
     method = 'GET'
     url = '/order/list'
-    response = request(method,url,options).body
+    response = api_request(method,url,options).body
     orders = {count: response['count'],total: response['total'], offset: response['offset'] }
     list = []
     order_list = Array(response['list'])
@@ -197,7 +197,7 @@ class Orders
 
     method = 'POST'
     url = '/order/create'
-    response = request(method,url,options)
+    response = api_request(method,url,options)
     order = Order.new(response.body)
     return order
   end
@@ -213,7 +213,7 @@ class Orders
 
     method = 'POST'
     url = '/order/refund'
-    response = request(method,url,options)
+    response = api_request(method,url,options)
     order = Order.new(response.body)
     return order
   end

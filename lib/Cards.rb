@@ -33,7 +33,7 @@ class Cards
 
     method = 'POST'
     url = '/card/add'
-    response = request(method,url,options)
+    response = api_request(method,url,options)
     card = Card.new(response.body)
     return card
   end
@@ -46,7 +46,7 @@ class Cards
 
     method = 'GET'
     url = '/card/list'
-    response = Array(request(method,url,options).body['cards'])
+    response = Array(api_request(method,url,options).body['cards'])
     cards = []
     i=0
     while i != response.count
@@ -65,7 +65,7 @@ class Cards
 
     method = 'POST'
     url = '/card/delete'
-    response = request(method,url,options)
+    response = api_request(method,url,options)
     card = Card.new(response.body)
     return card
   end

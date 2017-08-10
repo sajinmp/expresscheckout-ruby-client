@@ -33,7 +33,7 @@ class Wallets
     parameters = {
         :gateway => gateway
     }
-    response = request(method,url,parameters)
+    response = api_request(method,url,parameters)
     wallet = Wallet.new(response.body)
     return wallet
   end
@@ -53,7 +53,7 @@ class Wallets
         :command => 'authenticate',
         :gateway => gateway
     }
-    response = request(method,url,parameters)
+    response = api_request(method,url,parameters)
     wallet = Wallet.new(response.body)
     return wallet
   end
@@ -73,7 +73,7 @@ class Wallets
     end
 
     method = 'GET'
-    response = Array(request(method,url,{}).body['list'])
+    response = Array(api_request(method,url,{}).body['list'])
     wallets = []
     i=0
     while i != response.count
@@ -93,7 +93,7 @@ class Wallets
 
     url = "/customers/#{customer_id}/wallets/refresh-balances"
     method = 'GET'
-    response = Array(request(method,url,{}).body['list'])
+    response = Array(api_request(method,url,{}).body['list'])
     wallets = []
     i=0
     while i != response.count
@@ -117,7 +117,7 @@ class Wallets
     parameters = {
         :command => 'refresh'
     }
-    response = request(method,url,parameters)
+    response = api_request(method,url,parameters)
     wallet = Wallet.new(response.body)
     return wallet
   end
@@ -136,7 +136,7 @@ class Wallets
     parameters = {
         :command => 'authenticate'
     }
-    response = request(method,url,parameters)
+    response = api_request(method,url,parameters)
     wallet = Wallet.new(response.body)
     return wallet
   end
@@ -156,7 +156,7 @@ class Wallets
         :command => 'link',
         :otp => otp
     }
-    response = request(method,url,parameters)
+    response = api_request(method,url,parameters)
     wallet = Wallet.new(response.body)
     return wallet
   end
@@ -174,7 +174,7 @@ class Wallets
     parameters = {
         :command => 'delink'
     }
-    response = request(method,url,parameters)
+    response = api_request(method,url,parameters)
     wallet = Wallet.new(response.body)
     return wallet
   end

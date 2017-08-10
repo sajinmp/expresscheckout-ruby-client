@@ -28,7 +28,7 @@ class Customers
     end
     method = 'POST'
     url = '/customers'
-    response = request(method,url,options)
+    response = api_request(method,url,options)
     customers = Customer.new(response.body)
     return customers
   end
@@ -43,7 +43,7 @@ class Customers
           puts "count & offset can be passed if required.\n"
     end
 
-    response = request(method,url,options).body
+    response = api_request(method,url,options).body
     customer_list = Array(response['list'])
     customers = []
     customer_list.each  do |customerData|
@@ -67,7 +67,7 @@ class Customers
 
     method = 'GET'
     url = "/customers/#{customer_id}"
-    response = request(method,url,options)
+    response = api_request(method,url,options)
     customers = Customer.new(response.body)
     return customers
   end
@@ -80,7 +80,7 @@ class Customers
 
     method = 'POST'
     url = "/customers/#{customer_id}"
-    response = request(method,url,options)
+    response = api_request(method,url,options)
     customers = Customer.new(response.body)
     return customers
   end
